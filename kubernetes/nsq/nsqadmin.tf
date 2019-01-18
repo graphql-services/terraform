@@ -39,7 +39,7 @@ resource "kubernetes_deployment" "nsqadmin" {
           }
         }
 
-        image_pull_secrets = "${var.image_pull_secrets}"
+        # image_pull_secrets = "${var.image_pull_secrets}"
       }
     }
   }
