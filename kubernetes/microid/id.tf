@@ -1,11 +1,3 @@
-# resource "mysql_database" "id" {
-#   name              = "novacloud_auth_id"
-#   default_collation = "utf8_czech_ci"
-# }
-resource "postgresql_database" "id" {
-  name = "${var.name}_auth_id"
-}
-
 resource "kubernetes_service" "id" {
   metadata {
     name      = "id${var.namesuffix}"
@@ -120,4 +112,6 @@ resource "kubernetes_deployment" "id" {
       }
     }
   }
+
+  depends_on = ["kubernetes_secret.main"]
 }

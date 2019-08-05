@@ -1,7 +1,3 @@
-resource "postgresql_database" "idp" {
-  name = "${var.name}_auth_idp"
-}
-
 resource "kubernetes_service" "idp" {
   metadata {
     name      = "idp${var.namesuffix}"
@@ -106,4 +102,6 @@ resource "kubernetes_deployment" "idp" {
       }
     }
   }
+
+  depends_on = ["kubernetes_secret.main"]
 }

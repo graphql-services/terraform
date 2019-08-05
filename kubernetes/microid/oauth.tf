@@ -55,7 +55,7 @@ resource "kubernetes_deployment" "oauth" {
             value_from {
               secret_key_ref {
                 name = "microid${var.namesuffix}"
-                key  = "authDatabaseURL"
+                key  = "oauthDatabaseURL"
               }
             }
           }
@@ -122,4 +122,6 @@ resource "kubernetes_deployment" "oauth" {
       }
     }
   }
+
+  depends_on = ["kubernetes_secret.main"]
 }
