@@ -8,8 +8,9 @@ resource "kubernetes_ingress" "ingress" {
       "nginx.ingress.kubernetes.io/use-regex"      = "true"
       "certmanager.k8s.io/cluster-issuer"          = "letsencrypt"
 
-      # "nginx.ingress.kubernetes.io/ssl-redirect" = "true"
-      # "nginx.ingress.kubernetes.io/enable-cors"            = "true"
+      "nginx.ingress.kubernetes.io/ssl-redirect" = "true"
+      "nginx.ingress.kubernetes.io/enable-cors"  = "true"
+
       # "nginx.ingress.kubernetes.io/cors-allow-methods"     = "PUT, GET, POST, OPTIONS"
       # "nginx.ingress.kubernetes.io/cors-allow-origin"      = "*"
       # "nginx.ingress.kubernetes.io/cors-allow-credentials" = "true"
@@ -70,7 +71,7 @@ resource "kubernetes_ingress" "ingress" {
 
     tls {
       hosts       = ["${var.hostname}"]
-      secret_name = "cert"
+      secret_name = "microid-certificate${var.namesuffix}"
     }
   }
 }

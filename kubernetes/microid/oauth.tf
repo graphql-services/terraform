@@ -50,8 +50,14 @@ resource "kubernetes_deployment" "oauth" {
           }
 
           env {
-            name  = "DATABASE_URL"
-            value = "${var.database_url}/${var.name}_auth_oauth"
+            name = "DATABASE_URL"
+
+            value_from {
+              secret_key_ref {
+                name = "microid${var.namesuffix}"
+                key  = "authDatabaseURL"
+              }
+            }
           }
 
           env {

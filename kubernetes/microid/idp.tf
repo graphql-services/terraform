@@ -54,8 +54,14 @@ resource "kubernetes_deployment" "idp" {
           }
 
           env {
-            name  = "DATABASE_URL"
-            value = "${var.database_url}/${var.name}_auth_idp"
+            name = "DATABASE_URL"
+
+            value_from {
+              secret_key_ref {
+                name = "microid${var.namesuffix}"
+                key  = "idpDatabaseURL"
+              }
+            }
           }
 
           env {

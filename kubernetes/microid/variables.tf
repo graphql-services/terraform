@@ -1,3 +1,5 @@
+variable "name" {}
+
 variable "namesuffix" {
   default = ""
 }
@@ -5,6 +7,10 @@ variable "namesuffix" {
 variable "hostname" {}
 
 variable "database_url" {}
+
+variable "database_table_prefix" {
+  default = ""
+}
 
 variable "smtp_url" {}
 

@@ -69,23 +69,18 @@ resource "kubernetes_deployment" "id" {
           }
 
           env {
-            name  = "DATABASE_URL"
-            value = "${var.database_url}/${var.name}_auth_id"
-          }
-
-          env {
             name  = "OAUTH_URL"
-            value = "http://oauth/graphql"
+            value = "http://oauth${var.namesuffix}/graphql"
           }
 
           env {
             name  = "IDP_URL"
-            value = "http://idp/graphql"
+            value = "http://idp${var.namesuffix}/graphql"
           }
 
           env {
             name  = "EVENT_TRANSPORT_URL"
-            value = "http://mail-notifications"
+            value = "http://mail-notifications${var.namesuffix}"
           }
 
           resources {

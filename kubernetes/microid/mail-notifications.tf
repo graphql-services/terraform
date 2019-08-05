@@ -61,12 +61,12 @@ resource "kubernetes_deployment" "mail-notifications" {
 
           env {
             name  = "PROJECT_NAME"
-            value = "MuniProjects"
+            value = "${var.name}"
           }
 
           env {
             name  = "PROJECT_HOSTNAME"
-            value = "https://id.muniprojects.com"
+            value = "https://${var.hostname}"
           }
 
           resources {

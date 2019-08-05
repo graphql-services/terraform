@@ -5,9 +5,9 @@ resource "kubernetes_secret" "main" {
   }
 
   data {
-    idDatabaseURL    = "${var.database_url}/${var.name}_auth_idp"
-    idpDatabaseURL   = "${var.database_url}/${var.name}_auth_idp"
-    oauthDatabaseURL = "${var.database_url}/${var.name}_auth_idp"
+    idDatabaseURL    = "${var.database_url}/${var.database_table_prefix}id"
+    idpDatabaseURL   = "${var.database_url}/${var.database_table_prefix}idp"
+    oauthDatabaseURL = "${var.database_url}/${var.database_table_prefix}oauths"
   }
 
   type = "Opaque"
