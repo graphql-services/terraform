@@ -51,17 +51,17 @@ resource "kubernetes_deployment" "id-ui" {
 
           env {
             name  = "REACT_APP_API_URL"
-            value = "https://${var.subdomain}.${var.domain}/graphql"
+            value = "https://${var.hostname}/graphql"
           }
 
           env {
             name  = "REACT_APP_TOKEN_URL"
-            value = "https://${var.subdomain}.${var.domain}/oauth/token"
+            value = "https://${var.hostname}/oauth/token"
           }
 
           env {
             name  = "REACT_APP_FILE_UPLOAD_URL"
-            value = "https://${var.subdomain}.${var.domain}/files/upload"
+            value = "https://${var.hostname}/files/upload"
           }
 
           env {
