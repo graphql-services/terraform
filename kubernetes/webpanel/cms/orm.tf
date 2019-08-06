@@ -101,7 +101,7 @@ resource "kubernetes_deployment" "orm" {
 
   lifecycle {
     ignore_changes = [
-      "spec.0.template.0.spec.0.container.0.image",
+      "spec[0].template[0].spec[0].container[0].image",
     ]
   }
 }
