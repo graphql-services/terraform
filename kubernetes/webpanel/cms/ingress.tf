@@ -45,7 +45,7 @@ resource "kubernetes_ingress" "api" {
 
     tls {
       hosts       = ["${var.hostname}"]
-      secret_name = "${var.name}-${ver.environment}-cert"
+      secret_name = "${var.name}-${var.environment}-cert"
     }
   }
 }
