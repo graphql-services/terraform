@@ -5,7 +5,7 @@ resource "kubernetes_ingress" "ingress" {
     name      = "${var.project}-${var.name}"
     namespace = "${var.namespace}"
 
-    annotations {
+    annotations = {
       #   "nginx.ingress.kubernetes.io/rewrite-target" = "/"
       #   "nginx.ingress.kubernetes.io/add-base-url"   = true
       "certmanager.k8s.io/cluster-issuer" = "letsencrypt"
@@ -34,7 +34,7 @@ resource "kubernetes_ingress" "ingress" {
 
     tls {
       hosts       = ["${var.hostname}"]
-      secret_name = "${replace(var.hostname,".","-")}-cert"
+      secret_name = "${replace(var.hostname, ".", "-")}-cert"
     }
   }
 }

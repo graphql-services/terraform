@@ -3,7 +3,7 @@ resource "kubernetes_ingress" "ingress" {
     name      = "auth${var.namesuffix}"
     namespace = "${var.namespace}"
 
-    annotations {
+    annotations = {
       "nginx.ingress.kubernetes.io/rewrite-target" = "/$1"
       "nginx.ingress.kubernetes.io/use-regex"      = "true"
       "certmanager.k8s.io/cluster-issuer"          = "letsencrypt"

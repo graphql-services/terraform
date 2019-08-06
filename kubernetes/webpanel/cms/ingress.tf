@@ -3,7 +3,7 @@ resource "kubernetes_ingress" "api" {
     name      = "api-${var.environment}"
     namespace = "${var.namespace}"
 
-    annotations {
+    annotations = {
       "nginx.ingress.kubernetes.io/rewrite-target" = "/$1"
       "nginx.ingress.kubernetes.io/use-regex"      = "true"
 
