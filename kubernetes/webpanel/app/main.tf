@@ -56,6 +56,14 @@ resource "kubernetes_deployment" "app" {
             value = "${var.tokenURL}"
           }
 
+          dynamic "env" {
+            for_each = var.tokenScope == "" ? [] : [1]
+            content {
+              name  = "REACT_APP_SCOPE"
+              value = "${var.tokenScope}"
+            }
+          }
+
           env {
             name  = "REACT_APP_CLIENT_ID"
             value = "default"
@@ -66,12 +74,9 @@ resource "kubernetes_deployment" "app" {
             value = "default"
           }
 
-          dynamic "env" {
-            for_each = var.fileUploadURL == "" ? [] : [1]
-            content {
-              name  = "REACT_APP_FILE_UPLOAD_URL"
-              value = "${var.fileUploadURL}"
-            }
+          env {
+            name  = "REACT_APP_FILE_UPLOAD_URL"
+            value = "${var.fileUploadURL}"
           }
 
           resources {
