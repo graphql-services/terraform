@@ -66,9 +66,12 @@ resource "kubernetes_deployment" "app" {
             value = "default"
           }
 
-          env {
-            name  = "REACT_APP_FILE_UPLOAD_URL"
-            value = "${var.fileUploadURL}"
+          dynamic "env" {
+            for_each = var.fileUploadURL == "" ? [] : [1]
+            content {
+              name  = "REACT_APP_FILE_UPLOAD_URL"
+              value = "${var.fileUploadURL}"
+            }
           }
 
           resources {
