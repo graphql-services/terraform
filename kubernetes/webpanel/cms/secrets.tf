@@ -4,7 +4,7 @@ resource "kubernetes_secret" "main" {
     namespace = "${var.namespace}"
   }
 
-  data {
+  data = {
     databaseURL = "${var.database_url}/${var.name}-orm-${var.environment}"
   }
 
