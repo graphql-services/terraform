@@ -5,7 +5,7 @@ resource "kubernetes_service" "idp" {
   }
 
   spec {
-    selector {
+    selector = {
       stack = "microid"
       app   = "idp${var.namesuffix}"
     }
@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "idp" {
 
     template {
       metadata {
-        labels {
+        labels = {
           stack = "microid"
           app   = "idp${var.namesuffix}"
         }

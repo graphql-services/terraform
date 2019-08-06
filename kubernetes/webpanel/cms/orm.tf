@@ -5,7 +5,7 @@ resource "kubernetes_service" "orm" {
   }
 
   spec {
-    selector {
+    selector = {
       app = "${var.name}-orm-${var.environment}"
     }
 
@@ -31,7 +31,7 @@ resource "kubernetes_deployment" "orm" {
 
     template {
       metadata {
-        labels {
+        labels = {
           app = "${var.name}-orm-${var.environment}"
         }
       }

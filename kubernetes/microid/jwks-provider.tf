@@ -5,7 +5,7 @@ resource "kubernetes_service" "jwks-provider" {
   }
 
   spec {
-    selector {
+    selector = {
       stack = "microid"
       app   = "jwks-provider${var.namesuffix}"
     }
@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "jwks-provider" {
 
     template {
       metadata {
-        labels {
+        labels = {
           stack = "microid"
           app   = "jwks-provider${var.namesuffix}"
         }

@@ -5,7 +5,7 @@ resource "kubernetes_service" "app" {
   }
 
   spec {
-    selector {
+    selector = {
       app = "${var.name}"
     }
 
@@ -31,7 +31,7 @@ resource "kubernetes_deployment" "app" {
 
     template {
       metadata {
-        labels {
+        labels = {
           app = "${var.name}"
         }
       }

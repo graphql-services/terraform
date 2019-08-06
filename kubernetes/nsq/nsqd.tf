@@ -5,7 +5,7 @@ resource "kubernetes_service" "nsqd" {
   }
 
   spec {
-    selector {
+    selector = {
       project = "${var.name}"
       app     = "nsqd"
     }
@@ -38,7 +38,7 @@ resource "kubernetes_deployment" "nsqd" {
 
     template {
       metadata {
-        labels {
+        labels = {
           project = "${var.name}"
           app     = "nsqd"
         }

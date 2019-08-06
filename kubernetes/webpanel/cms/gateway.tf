@@ -5,7 +5,7 @@ resource "kubernetes_service" "gateway" {
   }
 
   spec {
-    selector {
+    selector = {
       app = "${var.name}-gateway-${var.environment}"
     }
 
@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "gateway" {
 
     template {
       metadata {
-        labels {
+        labels = {
           app = "${var.name}-gateway-${var.environment}"
         }
       }

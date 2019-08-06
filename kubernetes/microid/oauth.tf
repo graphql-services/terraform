@@ -5,7 +5,7 @@ resource "kubernetes_service" "oauth" {
   }
 
   spec {
-    selector {
+    selector = {
       stack = "microid"
       app   = "oauth${var.namesuffix}"
     }
@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "oauth" {
 
     template {
       metadata {
-        labels {
+        labels = {
           stack = "microid"
           app   = "oauth${var.namesuffix}"
         }

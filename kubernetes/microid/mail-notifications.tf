@@ -5,7 +5,7 @@ resource "kubernetes_service" "mail-notifications" {
   }
 
   spec {
-    selector {
+    selector = {
       stack = "microid"
       app   = "mail-notifications${var.namesuffix}"
     }
@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "mail-notifications" {
 
     template {
       metadata {
-        labels {
+        labels = {
           stack = "microid"
           app   = "mail-notifications${var.namesuffix}"
         }

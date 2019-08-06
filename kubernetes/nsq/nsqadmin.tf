@@ -5,13 +5,13 @@ resource "kubernetes_deployment" "nsqadmin" {
   }
 
   spec {
-    selector {
+    selector = {
       name = "${var.name}"
     }
 
     template {
       metadata {
-        labels {
+        labels = {
           name = "${var.name}"
         }
       }

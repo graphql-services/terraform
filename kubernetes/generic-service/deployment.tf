@@ -12,7 +12,7 @@ resource "kubernetes_deployment" "deployment" {
 
     template {
       metadata {
-        labels {
+        labels= {
           project = "${var.project}"
           app     = "${var.name}"
         }
