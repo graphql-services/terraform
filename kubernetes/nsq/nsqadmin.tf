@@ -6,7 +6,9 @@ resource "kubernetes_deployment" "nsqadmin" {
 
   spec {
     selector = {
-      name = "${var.name}"
+      match_labels {
+        name = "${var.name}"
+      }
     }
 
     template {

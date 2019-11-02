@@ -32,8 +32,10 @@ resource "kubernetes_deployment" "nsqlookupd" {
 
   spec {
     selector {
-      project = "${var.name}"
-      app     = "nsqlookupd"
+      match_labels {
+        project = "${var.name}"
+        app     = "nsqlookupd"
+      }
     }
 
     template {

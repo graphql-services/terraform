@@ -32,8 +32,10 @@ resource "kubernetes_deployment" "nsqd" {
 
   spec {
     selector {
-      project = "${var.name}"
-      app     = "nsqd"
+      match_labels {
+        project = "${var.name}"
+        app     = "nsqd"
+      }
     }
 
     template {
